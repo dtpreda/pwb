@@ -28,23 +28,17 @@
     
 </script>
 
-<a href="/about" class="wrapper">
+<div class="wrapper">
     <div class="portrait-wrapper">
         <img bind:this={image} src={src} alt="Portrait" class="portrait">
     </div>
     <div bind:this={labelWrapper} class="label-wrapper">
         <p bind:this={label} class="label">{labelText}</p>
-        <div class="label-line">
-
-        </div>
+        <div class="label-line"></div>
     </div>
-</a>
+</div>
 
 <style>
-    a {
-        text-decoration: none;
-    }
-
     .wrapper {
         display:flex;
         flex-direction: column;
@@ -63,8 +57,7 @@
 
     .portrait {
         width: 100%; /* Allow the image to scale proportionally */
-        max-width: 400px; /* Set an additional maximum width of 400px */
-        height: 100%;
+        height: auto;
         object-fit: cover;
         transform: scale(1.5);
         -ms-transform:scale(1.5);

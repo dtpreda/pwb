@@ -1,14 +1,21 @@
 <script>
 	import TextPortrait from "$lib/components/TextPortrait.svelte";
+    import Banner from "$lib/components/Banner.svelte";
     import portrait from '$lib/assets/IMG-5164.jpg'
 </script>
 
 
-<div class="center">
-    <div class="center center-items flex-column">
+<div class="center center-items">
+    <div class="banner-left">
+        <Banner text="おはよう" />
+    </div>
+    <div class="flex center-items flex-column">
         <h1 class="first-name archivo royal">DAVID</h1>
         <TextPortrait src={portrait} labelText="About"/>
         <h1 class="last-name archivo royal">PREDA</h1>
+    </div>
+    <div class="banner-right">
+        <Banner text="ございます" />
     </div>
 </div>
 
@@ -23,6 +30,10 @@
     .center-items {
         align-items: center;
         justify-content: center;    
+    }
+
+    .flex {
+        display: flex;
     }
     
     .flex-column {
@@ -50,5 +61,13 @@
 
     .royal {
         color: #163852;
+    }
+
+    .banner-left {
+        margin-right: 20px;
+    }
+
+    .banner-right {
+        margin-left: 20px;
     }
 </style>
