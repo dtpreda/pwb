@@ -10,11 +10,20 @@
     /** @type {HTMLDivElement} */
     let labelWrapper;
     
-
-    onMount(() => {
+    const resize = () => {
         labelWrapper.style.marginBottom = "-" + (labelWrapper.offsetHeight) + "px";
         labelWrapper.style.top = "-" + (labelWrapper.offsetHeight + (image.offsetHeight / 2 - labelWrapper.offsetHeight / 2)) + "px";
         labelWrapper.style.left = "-" + ((image.offsetWidth / 2) - (labelWrapper.offsetWidth / 2)) + "px";
+    }
+
+    onMount(() => {
+        window.addEventListener('resize', resize);
+
+        resize();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+        }
     }) 
     
 </script>
