@@ -7,11 +7,14 @@
     let image;
     /** @type {HTMLParagraphElement} */
     let label;
+    /** @type {HTMLDivElement} */
+    let labelWrapper;
+    
 
     onMount(() => {
-        label.style.marginBottom = "-" + (label.offsetHeight) + "px";
-        label.style.top = "-" + (label.offsetHeight) + "px";
-        label.style.left = "-" + ((image.offsetWidth / 2) - (label.offsetWidth / 2)) + "px";
+        labelWrapper.style.marginBottom = "-" + (labelWrapper.offsetHeight) + "px";
+        labelWrapper.style.top = "-" + (labelWrapper.offsetHeight + (image.offsetHeight / 2 - labelWrapper.offsetHeight / 2)) + "px";
+        labelWrapper.style.left = "-" + ((image.offsetWidth / 2) - (labelWrapper.offsetWidth / 2)) + "px";
     }) 
     
 </script>
@@ -20,7 +23,12 @@
     <div class="portrait-wrapper">
         <img bind:this={image} src={src} alt="Portrait" class="portrait">
     </div>
-    <p bind:this={label} class="label">{labelText}</p>
+    <div bind:this={labelWrapper} class="label-wrapper">
+        <p bind:this={label} class="label">{labelText}</p>
+        <div class="label-line">
+
+        </div>
+    </div>
 </a>
 
 <style>
@@ -50,17 +58,32 @@
         height: 100%;
         object-fit: cover;
         transform: scale(1.5);
+        -ms-transform:scale(1.5);
+        -moz-transform:scale(1.5);
+        -webkit-transform:scale(1.5);
+        -o-transform:scale(1.5);
     }
 
+    .label-wrapper {
+        position:relative;
+        display: flex;
+        flex-direction: row;
+    }
+    
     .label {
         margin: 0;
-        position:relative;
         writing-mode: vertical-lr;
         text-orientation: upright;
         color: #D4E2EF;
         font-size: 30px;
         font-family: 'Noto Serif JP', serif;
         padding: 0;
-        padding-bottom: 5px;
+        padding-left: 5px;
+        font-weight: bold;
+    }
+
+    .label-line {
+        border-left: 2px solid #D4E2EF;
+        margin-left: -8px;
     }
 </style>
