@@ -16,21 +16,40 @@
     
 </script>
 
-<div class="wrapper">
-    <img bind:this={image} src={src} alt="Hello there" class="portrait">
+<a href="/about" class="wrapper">
+    <div class="portrait-wrapper">
+        <img bind:this={image} src={src} alt="Portrait" class="portrait">
+    </div>
     <p bind:this={label} class="label">{labelText}</p>
-</div>
+</a>
 
 <style>
+    a {
+        text-decoration: none;
+    }
+
     .wrapper {
         display:flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    .portrait {
+
+    .portrait-wrapper {
+        display:inline-block;
+        overflow: hidden;
         width: 80%; /* Allow the image to scale proportionally */
         max-width: 400px; /* Set an additional maximum width of 400px */
+        margin: 0;
+        padding: 0;
+    }
+
+    .portrait {
+        width: 100%; /* Allow the image to scale proportionally */
+        max-width: 400px; /* Set an additional maximum width of 400px */
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.5);
     }
 
     .label {
