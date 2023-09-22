@@ -11,10 +11,17 @@
 		dispatch('message', true);
 	}
     
-    function show() {
-        dispatch('message', false);
+    function updateProject() {
+        dispatch('message', "project");
     }
 
+    function updatePortfolio() {
+        dispatch('message', "portfolio");
+    }
+
+    function updateBlog() {
+        dispatch('message', "blog");
+    }
 </script>
 
 <div class="wrapper">

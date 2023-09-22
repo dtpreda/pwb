@@ -8,36 +8,64 @@
     import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
     import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
     import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte';
-
+    
+    import { pictures } from "$lib/assets/pictures.js";
+    import PictureCarousel from "$lib/components/PictureCarousel.svelte";
+	import { onMount } from "svelte";
+	import { fade, fly, scale, slide } from "svelte/transition";
+	import { quintOut } from "svelte/easing";
+    
+    let state = "main";
     let links = ["https://www.linkedin.com/in/dtpreda/", "https://github.com/dtpreda", "https://www.instagram.com/dtpreda/"];
+
+    onMount(() => {
+        setTimeout(() => {
+            state = "photo"
+        }, 100)
+    });
 </script>
 
-
 <div class="center center-items">
-    <div class="banner-left">
-        <Banner text="おはよう" />
-    </div>
-    <div class="flex center-items flex-column limited">
-        <h1 class="first-name archivo royal">DAVID</h1>
-        <div class="flex center-items center up-triplet">
-            <ActionGroup />
+    {#if state == "main"}
+        <div class="flex center-items" in:fade out:fly={{duration: 1000, easing: quintOut, y:'-5%'}}>
+            <div class="banner-left">
+                <Banner text="おはよう" />
+            </div>
+            <div class="flex center-items flex-column limited">
+                <h1 class="first-name archivo royal">DAVID</h1>
+                <div class="flex center-items center up-triplet">
+                    <ActionGroup />
+                </div>
+                <TextPortrait src={portrait} labelText=""/>
+                <div class="flex center-items center down-triplet">
+                    <Triplet {links}>
+                        <FaLinkedin slot="first" />
+                        <FaGithubSquare slot="second" />
+                        <FaInstagram slot="third" />
+                    </Triplet>
+                </div>
+                <h1 class="last-name archivo royal">PREDA</h1>
+            </div>
+            <div class="banner-right">
+                <Banner text="ございます" />
+            </div>
         </div>
-        <TextPortrait src={portrait} labelText=""/>
-        <div class="flex center-items center down-triplet">
-            <Triplet {links}>
-                <FaLinkedin slot="first" />
-                <FaGithubSquare slot="second" />
-                <FaInstagram slot="third" />
-            </Triplet>
+    {:else if state == "projects"}
+    {:else if state == "photo"}
+        <div class="center center-items flex-column wrapper" in:fade out:fly={{duration: 1000, easing: quintOut, y:'5%'}}>
+            <PictureCarousel {pictures} />
         </div>
-        <h1 class="last-name archivo royal">PREDA</h1>
-    </div>
-    <div class="banner-right">
-        <Banner text="ございます" />
-    </div>
+    {:else if state == "blog"}    
+    {/if}
 </div>
 
 <style>
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
     .center {
         display:flex;
         height: 100%;
