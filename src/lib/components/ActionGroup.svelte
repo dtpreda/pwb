@@ -6,32 +6,34 @@
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
-
-	function hide() {
-		dispatch('message', true);
-	}
     
-    function updateProject() {
-        dispatch('message', "project");
+    function dispatchProject() {
+        dispatch('message', {
+            state: "project"
+        });
     }
 
-    function updatePortfolio() {
-        dispatch('message', "portfolio");
+    function dispatchPortfolio() {
+        dispatch('message', {
+            state: "photo"
+        });
     }
 
-    function updateBlog() {
-        dispatch('message', "blog");
+    function dispatchBlog() {
+        dispatch('message', {
+            state: "blog"
+        });
     }
 </script>
 
 <div class="wrapper">
-    <button class="icon-wrapper" style="margin-right:15px;">
+    <button class="icon-wrapper" on:click={dispatchProject} style="margin-right:15px;">
         <FaLaptopCode />
     </button>
-    <button class="icon-wrapper">
+    <button class="icon-wrapper" on:click={dispatchPortfolio}>
         <FaCameraRetro />
     </button>
-    <button class="icon-wrapper" style="margin-left:15px;">
+    <button class="icon-wrapper" on:click={dispatchBlog} style="margin-left:15px;">
         <FaBookOpen />
     </button>
 </div>
@@ -60,5 +62,9 @@
         display: flex;
         justify-content: center;
         align-items:end;
+    }
+
+    .icon-wrapper:hover {
+        cursor: pointer;
     }
 </style>

@@ -18,11 +18,9 @@
     let state = "main";
     let links = ["https://www.linkedin.com/in/dtpreda/", "https://github.com/dtpreda", "https://www.instagram.com/dtpreda/"];
 
-    onMount(() => {
-        setTimeout(() => {
-            state = "photo"
-        }, 100)
-    });
+    function handleMessage(event) {
+		state = event.detail.state;
+	}
 </script>
 
 <div class="center center-items">
@@ -34,7 +32,7 @@
             <div class="flex center-items flex-column limited">
                 <h1 class="first-name archivo royal">DAVID</h1>
                 <div class="flex center-items center up-triplet">
-                    <ActionGroup />
+                    <ActionGroup on:message={handleMessage}/>
                 </div>
                 <TextPortrait src={portrait} labelText=""/>
                 <div class="flex center-items center down-triplet">
@@ -50,10 +48,10 @@
                 <Banner text="ございます" />
             </div>
         </div>
-    {:else if state == "projects"}
+    {:else if state == "project"}
     {:else if state == "photo"}
         <div class="center center-items flex-column wrapper" in:fade out:fly={{duration: 1000, easing: quintOut, y:'5%'}}>
-            <PictureCarousel {pictures} />
+            <PictureCarousel {pictures} on:message={handleMessage}/>
         </div>
     {:else if state == "blog"}    
     {/if}

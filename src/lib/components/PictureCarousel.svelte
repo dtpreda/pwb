@@ -2,9 +2,14 @@
     export let pictures;
     import FaChevronLeft from 'svelte-icons/fa/FaChevronLeft.svelte';
     import FaChevronRight from 'svelte-icons/fa/FaChevronRight.svelte';
-    import IoIosPause from 'svelte-icons/io/IoIosPause.svelte'
+    import FaHome from 'svelte-icons/fa/FaHome.svelte';
     import Carousel from 'svelte-carousel';
 
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+    let play = true;
     let carousel;
     function goToPrevPage() {
         carousel.goToPrev({ animated: true })
@@ -12,10 +17,17 @@
     function goToNextPage() {
         carousel.goToNext({ animated: true })
     }
+
+    function dispatchMain() {
+        dispatch('message', {
+			state: 'main'
+		});
+    }
+
 </script>
 
 <div class="flex center-items flex-column central-wrapper">
-    <Carousel class="image-container" arrows={false} dots={false} autoplay={true} bind:this={carousel}>
+    <Carousel class="image-container" arrows={false} dots={false} bind:this={carousel}>
         {#each pictures as picture}
             <div class="image-info-bundle">
                 <div class="image-wrapper">
@@ -37,6 +49,9 @@
     <div class="command-wrapper">
         <button class="command-icon" id="previous" on:click={goToPrevPage}>
             <FaChevronLeft />
+        </button>
+        <button class="command-icon" id="pause" on:click={dispatchMain}>
+            <FaHome />
         </button>
         <button class="command-icon" id="next" on:click={goToNextPage}>
             <FaChevronRight />
@@ -91,6 +106,7 @@
         margin: 0;
         padding: 0;
         border: none;
+        color: #163852;
     }
 
     .command-icon:hover {
