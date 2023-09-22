@@ -1,19 +1,32 @@
 <script>
-    import FaCameraRetro from 'svelte-icons/fa/FaCameraRetro.svelte'
-    import FaLaptopCode from 'svelte-icons/fa/FaLaptopCode.svelte'
-    import FaBookOpen from 'svelte-icons/fa/FaBookOpen.svelte'
+    import FaCameraRetro from 'svelte-icons/fa/FaCameraRetro.svelte';
+    import FaLaptopCode from 'svelte-icons/fa/FaLaptopCode.svelte';
+    import FaBookOpen from 'svelte-icons/fa/FaBookOpen.svelte';
+
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+	function hide() {
+		dispatch('message', true);
+	}
+    
+    function show() {
+        dispatch('message', false);
+    }
+
 </script>
 
 <div class="wrapper">
-    <div class="icon-wrapper" style="margin-right:15px;">
+    <button class="icon-wrapper" style="margin-right:15px;">
         <FaLaptopCode />
-    </div>
-    <div class="icon-wrapper">
+    </button>
+    <button class="icon-wrapper">
         <FaCameraRetro />
-    </div>
-    <div class="icon-wrapper" style="margin-left:15px;">
+    </button>
+    <button class="icon-wrapper" style="margin-left:15px;">
         <FaBookOpen />
-    </div>
+    </button>
 </div>
 
 <style>
@@ -25,11 +38,15 @@
         align-items: center;
     }
 
-    div {
+    button {
         width: 10%;
         height: auto;
         text-decoration: none;
         color: #163852;
+        padding: 0;
+        margin:0;
+        background: none;
+        border: none;
     }
 
     .icon-wrapper {
