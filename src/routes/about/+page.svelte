@@ -1,25 +1,48 @@
 <script>
     import { pictures } from "$lib/assets/pictures.js";
-    import FaChevronLeft from 'svelte-icons/fa/FaChevronLeft.svelte'
-    import FaChevronRight from 'svelte-icons/fa/FaChevronRight.svelte'
+	import { onMount } from "svelte";
+    import FaChevronLeft from 'svelte-icons/fa/FaChevronLeft.svelte';
+    import FaChevronRight from 'svelte-icons/fa/FaChevronRight.svelte';
+
+    /** @type {HTMLDivElement} */
+    let imageContainer;
+
+    let currentIndex = 0;
+
+    let images;
+
+    onMount (() => {
+        images = Array.prototype.slice.call(imageContainer.children);
+        while (imageContainer.firstChild) {
+            imageContainer.removeChild(imageContainer.firstChild);
+        }
+
+        console.log(images)
+
+        imageContainer.appendChild(images[0]);
+    });
 </script>
 
 <div class="center center-items flex-column wrapper">
     <div class="flex center-items flex-column central-wrapper">
-        <div class="image-info-bundle">
-            <div class="image-wrapper">
-                <img src={"/src/lib/assets/pictures/" + pictures[0].src} alt="" class={"image " + pictures[0].orientation} />
-            </div>
-            <p class="authorship noto">© {pictures[0].author} {pictures[0].year}, All Rights Reserved.</p>
-            <div class="info">
-                <h1 class="title noto">{pictures[0].name}</h1>
-                {#if pictures[0].location_url != ""}
-                <a href={pictures[0].location_url} target="_blank"><h4 class="location-text noto">@{pictures[0].location}</h4></a>
-                {:else}
-                <h4 class="location-text noto">@{pictures[0].location}</h4>
-                {/if}
-                <p class="description noto">{pictures[0].description}</p>
-            </div>
+        <div bind:this={imageContainer} class="image-container">
+            {#each pictures as picture}
+                <div class="image-info-bundle">
+                    <div class="image-wrapper">
+                        <img src={"/src/lib/assets/pictures/" + picture.src} alt="" class={"image " + picture.orientation} />
+                    </div>
+                    <p class="authorship noto">© {picture.author} {picture.year}, All Rights Reserved.</p>
+                    <div class="info">
+                        <h1 class="title noto">{picture.name}</h1>
+                        {#if picture.location_url != ""}
+                        <a href={picture.location_url} target="_blank"><h4 class="location-text noto">@{picture.location}</h4></a>
+                        {:else}
+                        <h4 class="location-text noto">@{picture.location}</h4>
+                        {/if}
+                        <p class="description noto">{picture.description}</p>
+                    </div>
+                </div>
+            {/each}
         </div>
         <div class="command-wrapper" id="previous">
             <div class="command-icon">
@@ -38,6 +61,18 @@
         height: 100%;
     }
 
+    .image-container {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        position:relative;
+    }
+
+    .image-info-bundle {
+        min-width: 100%;
+        position: relative;
+    }
+
     .central-wrapper * {
         margin: 0;
     }
@@ -47,7 +82,7 @@
     }
 
     #previous {
-        margin-left: 1em;
+        margin-right: 1em;
     }
 
     .command-wrapper {
