@@ -3,29 +3,20 @@
 	import { onMount } from "svelte";
     import FaChevronLeft from 'svelte-icons/fa/FaChevronLeft.svelte';
     import FaChevronRight from 'svelte-icons/fa/FaChevronRight.svelte';
+    import Carousel from 'svelte-carousel';
 
-    /** @type {HTMLDivElement} */
-    let imageContainer;
-
-    let currentIndex = 0;
-
-    let images;
-
-    onMount (() => {
-        images = Array.prototype.slice.call(imageContainer.children);
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
-
-        console.log(images)
-
-        imageContainer.appendChild(images[0]);
-    });
+    let carousel;
+    function goToPrevPage() {
+        carousel.goToPrev({ animated: true })
+    }
+    function goToNextPage() {
+        carousel.goToNext({ animated: true })
+    }
 </script>
 
 <div class="center center-items flex-column wrapper">
     <div class="flex center-items flex-column central-wrapper">
-        <div bind:this={imageContainer} class="image-container">
+        <Carousel class="image-container" arrows={false} dots={false} autoplay={true} bind:this={carousel}>
             {#each pictures as picture}
                 <div class="image-info-bundle">
                     <div class="image-wrapper">
@@ -43,14 +34,14 @@
                     </div>
                 </div>
             {/each}
-        </div>
-        <div class="command-wrapper" id="previous">
-            <div class="command-icon">
+        </Carousel>
+        <div class="command-wrapper">
+            <button class="command-icon" id="previous" on:click={goToPrevPage}>
                 <FaChevronLeft />
-            </div>
-            <div class="command-icon" id="next">
+            </button>
+            <button class="command-icon" id="next" on:click={goToNextPage}>
                 <FaChevronRight />
-            </div>
+            </button>
         </div>
     </div>
 </div>
@@ -98,6 +89,14 @@
         width: 2em;
         font-weight: 100;
         font-size: 10px;
+        background: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .command-icon:hover {
+        cursor:pointer;
     }
     
     .image {
@@ -131,8 +130,12 @@
         font-weight: 200;
     }
 
+    .title {
+        line-height: 1.2;
+    }
+
     .location-text {
-        margin-top: -5px;
+        margin-top: 5px;
     }
 
     .image-wrapper {

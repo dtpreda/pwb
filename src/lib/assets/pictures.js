@@ -12,7 +12,7 @@ export const pictures = [
     {
         src: "IMG-5841.jpg",
         orientation: "vertical",
-        name: "Sailor Mooning in Kyoto",
+        name: "Kyoto Sailor Moon",
         location: "京都駅",
         location_url: "",
         description: "An amazing night out at Kyoto Station, which features a fun light tunnel.",
