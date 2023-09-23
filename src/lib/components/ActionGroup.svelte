@@ -1,7 +1,7 @@
 <script>
     import FaCameraRetro from 'svelte-icons/fa/FaCameraRetro.svelte';
     import FaLaptopCode from 'svelte-icons/fa/FaLaptopCode.svelte';
-    import FaBookOpen from 'svelte-icons/fa/FaBookOpen.svelte';
+    import FaInfoCircle from 'svelte-icons/fa/FaInfoCircle.svelte'
 
 	import { createEventDispatcher } from 'svelte';
 
@@ -19,9 +19,9 @@
         });
     }
 
-    function dispatchBlog() {
+    function dispatchAbout() {
         dispatch('message', {
-            state: "blog"
+            state: "about"
         });
     }
 </script>
@@ -30,11 +30,11 @@
     <button class="icon-wrapper" on:click={dispatchProject} style="margin-right:15px;">
         <FaLaptopCode />
     </button>
-    <button class="icon-wrapper" on:click={dispatchPortfolio}>
-        <FaCameraRetro />
+    <button class="icon-wrapper" on:click={dispatchAbout}>
+        <FaInfoCircle />
     </button>
-    <button class="icon-wrapper" on:click={dispatchBlog} style="margin-left:15px;">
-        <FaBookOpen />
+    <button class="icon-wrapper" on:click={dispatchPortfolio} style="margin-left:15px;">
+        <FaCameraRetro />
     </button>
 </div>
 

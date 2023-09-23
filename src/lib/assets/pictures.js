@@ -5,7 +5,7 @@ export const pictures = [
         name: "Portrait @清水寺",
         location: "清水寺",
         location_url: "",
-        description: "A happy memory at my favourite Shinto temple.",
+        description: "A happy memory at my favourite temple. Wearing a kimono was great, but it really was a challenge for my back at first.",
         author: "Mafalda Vieira",
         year: "2023"
     },

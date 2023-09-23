@@ -10,6 +10,7 @@
     import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte';
     
     import { pictures } from "$lib/assets/pictures.js";
+    import { projects } from "$lib/assets/projects.js";
     import PictureCarousel from "$lib/components/PictureCarousel.svelte";
 	import { onMount } from "svelte";
 	import { fade, fly, scale, slide } from "svelte/transition";
@@ -49,11 +50,15 @@
             </div>
         </div>
     {:else if state == "project"}
-    {:else if state == "photo"}
         <div class="center center-items flex-column wrapper" in:fade out:fly={{duration: 1000, easing: quintOut, y:'5%'}}>
-            <PictureCarousel {pictures} on:message={handleMessage}/>
+            <PictureCarousel pictures={projects} on:message={handleMessage}/>
         </div>
-    {:else if state == "blog"}    
+    {:else if state == "about"}    
+        <p>This is an about page</p>
+    {:else if state == "photo"}
+    <div class="center center-items flex-column wrapper" in:fade out:fly={{duration: 1000, easing: quintOut, y:'5%'}}>
+        <PictureCarousel {pictures} on:message={handleMessage}/>
+    </div>
     {/if}
 </div>
 

@@ -9,7 +9,6 @@
 
 	const dispatch = createEventDispatcher();
 
-    let play = true;
     let carousel;
     function goToPrevPage() {
         carousel.goToPrev({ animated: true })
@@ -31,15 +30,17 @@
         {#each pictures as picture}
             <div class="image-info-bundle">
                 <div class="image-wrapper">
-                    <img src={"/src/lib/assets/pictures/" + picture.src} alt="" class={"image " + picture.orientation} />
+                    <img src={"/src/lib/assets/pictures/" + picture.src} alt="" class="image" />
                 </div>
-                <p class="authorship noto">© {picture.author} {picture.year}, All Rights Reserved.</p>
+                {#if picture.author != ""}
+                    <p class="authorship noto">© {picture.author} {picture.year}, All Rights Reserved.</p>
+                {/if}
                 <div class="info">
                     <h1 class="title noto">{picture.name}</h1>
                     {#if picture.location_url != ""}
-                    <a href={picture.location_url} target="_blank"><h4 class="location-text noto">@{picture.location}</h4></a>
+                    <a href={picture.location_url} target="_blank"><h4 class="location-text noto">{picture.location}</h4></a>
                     {:else}
-                    <h4 class="location-text noto">@{picture.location}</h4>
+                    <h4 class="location-text noto">{picture.location}</h4>
                     {/if}
                     <p class="description noto">{picture.description}</p>
                 </div>
@@ -60,18 +61,6 @@
 </div>
 
 <style>
-    .wrapper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .image-container {
-        display: flex;
-        flex-direction: row;
-        overflow: hidden;
-        position:relative;
-    }
-
     .image-info-bundle {
         min-width: 100%;
         position: relative;
@@ -128,6 +117,7 @@
     .info *, .authorship {
         padding-left: 10px;
         padding-right: 10px;
+        color: #163852;
     }
 
     .description {
@@ -167,12 +157,6 @@
         justify-content: center;
         height: 100%;
     }
-
-    .center {
-        display:flex;
-        margin-left: auto;
-        margin-right: auto;
-    }
     
     .center-items {
         align-items: center;    
@@ -184,6 +168,10 @@
     
     .flex-column {
         flex-direction: column;
+    }
+
+    a {
+        padding: 0 !important;
     }
 
 </style>
