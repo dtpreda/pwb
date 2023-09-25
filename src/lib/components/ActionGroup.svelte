@@ -2,16 +2,17 @@
     import FaCameraRetro from 'svelte-icons/fa/FaCameraRetro.svelte';
     import FaLaptopCode from 'svelte-icons/fa/FaLaptopCode.svelte';
     import FaInfoCircle from 'svelte-icons/fa/FaInfoCircle.svelte'
+    import { base } from '$app/paths';
 </script>
 
 <div class="wrapper">
-    <a href="/projects" class="icon-wrapper" style="margin-right:15px;">
+    <a href="{base}/projects" class="icon-wrapper" style="margin-right:15px;">
         <FaLaptopCode />
     </a>
-    <a href="/about" class="icon-wrapper">
+    <a href="{base}/about" class="icon-wrapper">
         <FaInfoCircle />
     </a>
-    <a href="/portfolio" class="icon-wrapper" style="margin-left:15px;">
+    <a href="{base}/portfolio" class="icon-wrapper" style="margin-left:15px;">
         <FaCameraRetro />
     </a>
 </div>

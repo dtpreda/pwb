@@ -8,6 +8,7 @@
     import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte';
     import FaGithubSquare from 'svelte-icons/fa/FaGithubSquare.svelte';
     import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte';
+    import { base } from "$app/paths";
 
     import { send, receive } from '$lib/assets/crossfade.js';
     

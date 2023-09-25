@@ -4,6 +4,7 @@
     import FaChevronRight from 'svelte-icons/fa/FaChevronRight.svelte';
     import FaHome from 'svelte-icons/fa/FaHome.svelte';
     import Carousel from 'svelte-carousel';
+    import { base } from "$app/paths";
 
     import { createEventDispatcher } from 'svelte';
 
@@ -44,7 +45,7 @@
         <button class="command-icon" id="previous" on:click={goToPrevPage}>
             <FaChevronLeft />
         </button>
-        <a href="/" class="command-icon" id="home">
+        <a href="{base}/" class="command-icon" id="home">
             <FaHome />
         </a>
         <button class="command-icon" id="next" on:click={goToNextPage}>
