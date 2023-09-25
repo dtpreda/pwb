@@ -17,6 +17,10 @@
     function goToNextPage() {
         carousel.goToNext({ animated: true })
     }
+
+    function getImageUrl(name) {
+        return new URL("/src/lib/assets/pictures/" + name, import.meta.url).href
+    }
 </script>
 
 <div class="flex center-items flex-column central-wrapper">
@@ -24,7 +28,7 @@
         {#each pictures as picture}
             <div class="image-info-bundle">
                 <div class="image-wrapper">
-                    <img src={"/src/lib/assets/pictures/" + picture.src} alt="" class="image" />
+                    <img src={getImageUrl(picture.src)} alt="" class="image" />
                 </div>
                 {#if picture.author != ""}
                     <p class="authorship noto">© {picture.author} {picture.year}, All Rights Reserved.</p>

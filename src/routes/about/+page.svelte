@@ -1,11 +1,13 @@
 <script>
     import { send, receive } from '$lib/assets/crossfade.js';
     import FaHome from 'svelte-icons/fa/FaHome.svelte';
+    import about from '$lib/assets/pictures/abt.jpg';
+	import { base } from '$app/paths';
 </script>
 
 <div class="center-items flex-column central-wrapper wrapper" in:receive={{key: 'div'}} out:send={{ key: 'div'}}>
     <div class="image-wrapper">
-        <img src={"/src/lib/assets/pictures/abt.jpg"} alt="" class="image" />
+        <img src={about} alt="" class="image" />
     </div>
     <div class="info">
         <div class="quote-wrapper">
@@ -18,7 +20,7 @@
             I aim to one day be free to just pursue those full-time.<br>
             Thanks for stopping by!</p>
     </div>
-    <a href="/" class="command-icon" id="pause">
+    <a href="{base}/" class="command-icon" id="pause">
         <FaHome />
     </a>
 </div>
