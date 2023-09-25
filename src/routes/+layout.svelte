@@ -2,6 +2,11 @@
     <slot />
 </div>
 
+<svelte:head>
+    <title>David Preda</title> 
+</svelte:head>
+
+
 <style>
     .center {
         display:flex;
