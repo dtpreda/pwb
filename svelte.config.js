@@ -9,7 +9,7 @@ export default {
 	kit: {
 		adapter: adapter(),
 		paths: {
-			base: dev ? '' : 'pwb',
+			base: dev ? '' : '/pwb',
 		}
 	}
 };
