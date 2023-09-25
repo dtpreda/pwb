@@ -2,40 +2,18 @@
     import FaCameraRetro from 'svelte-icons/fa/FaCameraRetro.svelte';
     import FaLaptopCode from 'svelte-icons/fa/FaLaptopCode.svelte';
     import FaInfoCircle from 'svelte-icons/fa/FaInfoCircle.svelte'
-
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-    
-    function dispatchProject() {
-        dispatch('message', {
-            state: "project"
-        });
-    }
-
-    function dispatchPortfolio() {
-        dispatch('message', {
-            state: "photo"
-        });
-    }
-
-    function dispatchAbout() {
-        dispatch('message', {
-            state: "about"
-        });
-    }
 </script>
 
 <div class="wrapper">
-    <button class="icon-wrapper" on:click={dispatchProject} style="margin-right:15px;">
+    <a href="/projects" class="icon-wrapper" style="margin-right:15px;">
         <FaLaptopCode />
-    </button>
-    <button class="icon-wrapper" on:click={dispatchAbout}>
+    </a>
+    <a href="/about" class="icon-wrapper">
         <FaInfoCircle />
-    </button>
-    <button class="icon-wrapper" on:click={dispatchPortfolio} style="margin-left:15px;">
+    </a>
+    <a href="/portfolio" class="icon-wrapper" style="margin-left:15px;">
         <FaCameraRetro />
-    </button>
+    </a>
 </div>
 
 <style>
@@ -47,7 +25,7 @@
         align-items: center;
     }
 
-    button {
+    a {
         width: 10%;
         height: auto;
         text-decoration: none;

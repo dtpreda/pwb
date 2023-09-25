@@ -16,13 +16,6 @@
     function goToNextPage() {
         carousel.goToNext({ animated: true })
     }
-
-    function dispatchMain() {
-        dispatch('message', {
-			state: 'main'
-		});
-    }
-
 </script>
 
 <div class="flex center-items flex-column central-wrapper">
@@ -51,9 +44,9 @@
         <button class="command-icon" id="previous" on:click={goToPrevPage}>
             <FaChevronLeft />
         </button>
-        <button class="command-icon" id="pause" on:click={dispatchMain}>
+        <a href="/" class="command-icon" id="pause">
             <FaHome />
-        </button>
+        </a>
         <button class="command-icon" id="next" on:click={goToNextPage}>
             <FaChevronRight />
         </button>
