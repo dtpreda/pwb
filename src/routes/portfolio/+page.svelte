@@ -28,6 +28,10 @@
     ]
 </script>
 
+<svelte:head>
+    <title>David Preda - Portfolio</title> 
+</svelte:head>
+
 <div class="center center-items flex-column wrapper" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
     <PictureCarousel {pictures} />
 </div>

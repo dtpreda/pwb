@@ -5,6 +5,10 @@
 	import { base } from '$app/paths';
 </script>
 
+<svelte:head>
+    <title>David Preda - About</title> 
+</svelte:head>
+
 <div class="center-items flex-column central-wrapper wrapper" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
     <div class="image-wrapper" in:receive={{key: 'image'}} out:send={{ key: 'image'}}>
         <img src={about} alt="" class="image" />

@@ -15,6 +15,10 @@
     let links = ["https://www.linkedin.com/in/dtpreda/", "https://github.com/dtpreda", "https://www.instagram.com/dtpreda/"];
 </script>
 
+<svelte:head>
+    <title>David Preda</title> 
+</svelte:head>
+
 <div class="flex center-items" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
     <div class="banner-left">
         <Banner text="おはよう" />
