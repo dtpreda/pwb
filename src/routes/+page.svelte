@@ -15,7 +15,7 @@
     let links = ["https://www.linkedin.com/in/dtpreda/", "https://github.com/dtpreda", "https://www.instagram.com/dtpreda/"];
 </script>
 
-<div class="flex center-items" in:receive={{key: 'div'}} out:send={{ key: 'div'}}>
+<div class="flex center-items" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
     <div class="banner-left">
         <Banner text="おはよう" />
     </div>
@@ -24,7 +24,9 @@
         <div class="flex center-items center up-triplet">
             <ActionGroup />
         </div>
-        <TextPortrait src={portrait} labelText=""/>
+        <div in:receive={{key: 'image'}} out:send={{ key: 'image'}}>
+            <TextPortrait src={portrait} labelText="" />
+        </div>
         <div class="flex center-items center down-triplet">
             <Triplet {links}>
                 <FaLinkedin slot="first" />

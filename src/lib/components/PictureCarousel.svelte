@@ -5,6 +5,7 @@
     import FaHome from 'svelte-icons/fa/FaHome.svelte';
     import Carousel from 'svelte-carousel';
     import { base } from "$app/paths";
+    import { send, receive } from '$lib/assets/crossfade.js';
 
     import { createEventDispatcher } from 'svelte';
 

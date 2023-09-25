@@ -5,8 +5,8 @@
 	import { base } from '$app/paths';
 </script>
 
-<div class="center-items flex-column central-wrapper wrapper" in:receive={{key: 'div'}} out:send={{ key: 'div'}}>
-    <div class="image-wrapper">
+<div class="center-items flex-column central-wrapper wrapper" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
+    <div class="image-wrapper" in:receive={{key: 'image'}} out:send={{ key: 'image'}}>
         <img src={about} alt="" class="image" />
     </div>
     <div class="info">

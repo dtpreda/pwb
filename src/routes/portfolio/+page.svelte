@@ -28,7 +28,7 @@
     ]
 </script>
 
-<div class="center center-items flex-column wrapper" in:receive={{key: 'div'}} out:send={{ key: 'div'}}>
+<div class="center center-items flex-column wrapper" in:receive={{key: 'wrapper'}} out:send={{ key: 'wrapper'}}>
     <PictureCarousel {pictures} />
 </div>
 
