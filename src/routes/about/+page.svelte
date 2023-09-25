@@ -19,7 +19,7 @@
             <h4 class="quote-author noto">スパークル (ラッドウインプス)</h4>
         </div>
         <p class="description noto">Hey there! I am David Preda, a Portuguese/French student based in Porto, Portugal.<br>
-            I see myself as a jovial person, always looking for the next goal to achieve.<br>
+            I see myself as a jovial person who is constantly looking for the next thing to do.<br>
             On my free time, I enjoy spending time with my fiancée, practising sports (I'm currently fencing) and pursuing hobbies such as photography.<br>
             I aim to one day be free to just pursue those full-time.<br>
             Thanks for stopping by!</p>
